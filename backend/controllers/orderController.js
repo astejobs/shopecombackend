@@ -95,7 +95,7 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
         const message = await client.messages.create({
             body: `Your order ${order._id} has been ${req.body.status}`,
             to: `+91${order.shippingInfo.phoneNo}`,
-            from: '+12705454595',
+            from: `${process.env.TWILLO_PHONE_NUMBER}`,
         });
         console.log(message);
     } catch (error) {
